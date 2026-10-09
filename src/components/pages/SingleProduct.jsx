@@ -2,11 +2,14 @@ import { Star } from "lucide-react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { useCartProductContext } from "../../context/CartProductContext";
 
 export default function SingleProduct() {
   const { id } = useParams();
   const [prodotto, setProdotto] = useState(null);
   const navigate = useNavigate();
+
+  const { handleAddToCart } = useCartProductContext();
 
   useEffect(() => {
     async function fetchSingleProduct() {
@@ -99,7 +102,9 @@ export default function SingleProduct() {
               <hr />
 
               <div className="text-center">
-                <button className="btn btn-warning w-75 mb-1">
+                <button
+                  className="btn btn-warning w-75 mb-1"
+                  onClick={() => handleAddToCart(prodotto)}>
                   <span>Aggiungi al carrello</span>
                 </button>
                 <button className="btn btn-danger w-75">

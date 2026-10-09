@@ -31,7 +31,7 @@ export default function Prodotti() {
           <div
             key={item.id}
             className="col">
-            <div className="card">
+            <div className="card ">
               <h3 className="text-center">{item.title}</h3>
               <img
                 className=""
